@@ -30,7 +30,7 @@ if (isset($_POST['login-submit'])) {
                     $_SESSION['userid']=$row['id'];
                     $_SESSION['username']=$row['username'];
                     $randSuccess = getToken(10);
-                    header("Location: ../verify.php?success=$randSuccess");
+                    header("Location: ../user/index.php?success=$randSuccess");
                     exit(); 
                 }else{
                     $randSuccess = getToken(10);

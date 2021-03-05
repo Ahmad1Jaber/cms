@@ -1,6 +1,8 @@
 <?php $title = "Login";
 require_once "includes/header.php";
 require_once "app/conn.php";
+require_once "app/redirect.php";
+
 
 ?>
 
