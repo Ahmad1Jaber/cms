@@ -1,3 +1,11 @@
+<footer class="bg-light text-center text-lg-start fixed-bottom">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: #f8f9fa;">
+    Copyright &copy; <?php echo date("Y"); ?>
+    <a class="text-dark" href="https://www.ABC.com">ABC Complaint System</a>
+  </div>
+  <!-- Copyright -->
+</footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
