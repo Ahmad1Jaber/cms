@@ -20,6 +20,14 @@ if(isset($_GET["empty"])){
     echo "<div class=\"alert alert-secondary\" role=\"alert\">";
     echo "Username - User not found!";
     echo "</div>";
+}elseif(isset($_GET["session"])){
+    echo "<div class=\"alert alert-danger\" role=\"alert\">";
+    echo "Session - Session Terminated!";
+    echo "</div>";
+}elseif(isset($_GET["logout"])){
+    echo "<div class=\"alert alert-success\" role=\"alert\">";
+    echo "Logout - User logged out!";
+    echo "</div>";
 }
 
 ?>
