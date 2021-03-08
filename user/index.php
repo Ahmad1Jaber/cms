@@ -149,19 +149,19 @@ require_once "modules/services.php";
          echo "<div class=\"col\">";
          echo "<p class=\"text-muted\">Date of creation: <span class=\"text-success\">".$row["date"]."</span></p>";
          if($row["statusID"]==1){
-         echo "<p class=\"text-muted\">Status of the Complaint: <span class=\"text-warning\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\"></i>Pending</span></p>"; 
+         echo "<p class=\"text-muted\">Status of the Complaint: <span class=\"text-warning\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\"></i> Pending</span></p>"; 
          echo "</div>";
          echo "</div>";
          echo "</div>";
          echo "<hr>";
-         }elseif($row["statusID"]=2){
-          echo "<p class=\"text-muted\">Status of the Complaint: <span class=\"text-success\"><i class=\"fa fa-check-circle\" aria-hidden=\"true\"></i>Resolved</span></p>"; 
+         }elseif($row["statusID"]==2){
+          echo "<p class=\"text-muted\">Status of the Complaint: <span class=\"text-success\"><i class=\"fa fa-check-circle\" aria-hidden=\"true\"></i> Resolved</span></p>"; 
           echo "</div>";
           echo "</div>";
           echo "</div>";
           echo "<hr>";
-         }else{
-          echo "<p class=\"text-muted\">Status of the Complaint: <span class=\"text-danger\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i>Dismissed</span></p>"; 
+         }elseif($row["statusID"]==3){
+          echo "<p class=\"text-muted\">Status of the Complaint: <span class=\"text-danger\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i> Dismissed</span></p>"; 
           echo "</div>";
           echo "</div>";
           echo "</div>";
