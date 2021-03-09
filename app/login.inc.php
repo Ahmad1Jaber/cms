@@ -29,9 +29,16 @@ if (isset($_POST['login-submit'])) {
                     session_start();
                     $_SESSION['userid']=$row['id'];
                     $_SESSION['username']=$row['username'];
+                    $_SESSION['role']=$row['roleID'];
+                    if($_SESSION['role']==1){
                     $randSuccess = getToken(10);
                     header("Location: ../user/index.php?success=$randSuccess");
                     exit(); 
+                    }elseif($_SESSION['role']==2){
+                        $randSuccess = getToken(10);
+                        header("Location: ../admin/index.php?success=$randSuccess");
+                        exit(); 
+                        }
                 }else{
                     $randSuccess = getToken(10);
                     header("Location: ../index.php?passwd=$randSuccess");

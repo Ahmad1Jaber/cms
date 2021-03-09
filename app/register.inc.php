@@ -49,7 +49,7 @@ if (isset($_POST['register-submit'])) {
             }
         
             else{
-                $sql="INSERT INTO users (username,first_name,last_name,email,password,phone_number) VALUES (?,?,?,?,?,?)";
+                $sql="INSERT INTO users (username,first_name,last_name,email,password,phone_number, roleID) VALUES (?,?,?,?,?,?,'1')";
                 $stmt= mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt,$sql)){
                     header("Location: ../register.php?error=DBERROR");

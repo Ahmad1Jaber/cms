@@ -5,8 +5,7 @@
             <hr>
 
           <?php
-            $user=$_SESSION['userid'];
-            $sql = "SELECT * FROM complaint where statusID = '1' AND userID=$user";
+            $sql = "SELECT * FROM complaint where statusID = '1'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
