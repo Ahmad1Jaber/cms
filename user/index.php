@@ -133,12 +133,16 @@ require_once "modules/services.php";
           <!-- <img class="card-img-top smallimg" src="../assets/SVG/character1.svg" alt="No Complaints" height="350in"> -->
           
 <?php
+
+    //Select statement and query for results 
     $user= $_SESSION["userid"];
     $sql = " SELECT * FROM complaint where userID = '$user' ORDER BY c_id DESC ";
     $result = $conn->query($sql);
-
+    
+    //Check if results returned
     if ($result->num_rows > 0) {
-        // output data of each row
+
+        // Loop output data of each row
         while($row = $result->fetch_assoc()) {
          echo "<div class=\"card-body\">";
          echo "<h5 class=\"card-title\">".$row["subject"]."</h5>";

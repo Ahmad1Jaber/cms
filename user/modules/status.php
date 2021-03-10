@@ -5,12 +5,14 @@
             <hr>
 
           <?php
+            // Select and query results
+
             $user=$_SESSION['userid'];
             $sql = "SELECT * FROM complaint where statusID = '1' AND userID = '$user' ";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                // output data of each row
+                // output data of row
                 $rowcount=mysqli_num_rows($result);
                 echo "<p class=\"text-muted\">";
                 echo "Pending complaints <span>(".$rowcount.")</span>";
@@ -26,7 +28,7 @@
                 $result = $conn->query($sql);
     
                 if ($result->num_rows > 0) {
-                    // output data of each row
+                    // output data of row
                     $rowcount=mysqli_num_rows($result);
                     echo "<p class=\"text-muted\">";
                     echo "Resolved complaints <span>(".$rowcount.")</span>";
@@ -42,7 +44,7 @@
                     $result = $conn->query($sql);
         
                     if ($result->num_rows > 0) {
-                        // output data of each row
+                        // output data of row
                         $rowcount=mysqli_num_rows($result);
                         echo "<p class=\"text-muted\">";
                         echo "Dismissed complaints <span>(".$rowcount.")</span>";

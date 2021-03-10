@@ -28,17 +28,20 @@
   <tbody>
 
   <?php
+  //Select pending complaints from the database
   require "../app/conn.php";
   $sql = " SELECT * FROM complaint INNER JOIN users ON complaint.userID = users.id 
   INNER JOIN location ON complaint.locationID = location.id
   INNER JOIN service ON complaint.serviceID = service.id
   where statusID = '1' ORDER BY complaint.priority DESC, complaint.c_id DESC";
+  //Query selected statement
   $result = mysqli_query($conn , $sql);
   $count=1;
   if (mysqli_num_rows($result) > 0) {
-      // output data of each row
-      while($row = mysqli_fetch_array($result)) {
 
+      // Loop through output data of each row
+      while($row = mysqli_fetch_array($result)) {
+        
       echo "<tr>";
       echo "<th scope=\"row\">$count</th>";
       echo "<td>".$row["first_name"]." ".$row["last_name"]. "</td>";

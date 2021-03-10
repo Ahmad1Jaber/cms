@@ -3,11 +3,13 @@
         <h5 class="card-title">Available Services</h5>
         <hr>
         <?php
+        
+        // Select and query results
             $sql = "SELECT * FROM service";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                // output data of each row
+                // Loop and output data of each row
                 while($row = $result->fetch_assoc()) {
                 echo "<p class=\"text-muted\">";
                 echo $row['service'];

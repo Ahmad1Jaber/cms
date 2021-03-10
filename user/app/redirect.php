@@ -1,7 +1,12 @@
 <?php
+//Start session
 session_start();
 require_once "../app/token.inc.php";
+
+//Check if UserID session is set
 if(isset($_SESSION["userid"])){
+
+//Compare role id 
 if($_SESSION['role']==1){
     header("Location: ");
     //exit();
