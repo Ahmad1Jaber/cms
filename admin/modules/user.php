@@ -52,7 +52,7 @@
     ?>
       <td> 
       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row["id"];?>">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row["id"];?>" <?php if($_SESSION['userid']==$row['id']){echo "disabled";}?> >
  View
 </button>
 <!-- Modal -->
@@ -71,7 +71,7 @@
         <div class="col">
         <form action="app/user.php?id=<?php echo $row["id"]; ?>" method="POST">
         <div class="form-group mt-2">
-                <label for="subject">Make user admin:</label>
+                <label for="subject">Change user role:</label>
                 <select class="form-control" name="role" id="role">
                   <option value="1" <?php if($row["roleID"]==1){echo "disabled selected ";}?>>User</option>
                   <option value="2" <?php if($row["roleID"]==2){echo "disabled selected ";}?>>Admin</option>
