@@ -3,7 +3,7 @@
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: #f8f9fa;">
     Copyright &copy; <?php echo date("Y"); ?>
-    <a class="text-dark" href="https://www.ABC.com">ABC Complaint System</a>
+    <a class="text-dark" href="https://www.ABC.com">ABC Complaint System</a><span> | Admin Dashboard</span>
   </div>
   <!-- Copyright -->
 </footer>

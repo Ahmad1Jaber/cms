@@ -1,7 +1,7 @@
 <div class="col col-md-auto mb-4">
     <div class="card" >
         <div class="card-body">
-            <h5 class="card-title">Status of the complaints</h5>
+            <h5 class="card-title">Complaints</h5>
             <hr>
 
           <?php
@@ -59,5 +59,6 @@
 
 
         </div>
-      </div>
+        </div>
+        </div>
       

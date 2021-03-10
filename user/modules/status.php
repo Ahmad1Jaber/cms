@@ -6,7 +6,7 @@
 
           <?php
             $user=$_SESSION['userid'];
-            $sql = "SELECT * FROM complaint where statusID = '1' AND userID=$user";
+            $sql = "SELECT * FROM complaint where statusID = '1' AND userID = '$user' ";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -22,7 +22,7 @@
                   echo "</p>";  
                 }
 
-                $sql = "SELECT * FROM complaint where statusID = '2'";
+                $sql = "SELECT * FROM complaint where statusID = '2' AND userID = '$user'";
                 $result = $conn->query($sql);
     
                 if ($result->num_rows > 0) {
@@ -38,7 +38,7 @@
                       echo "</p>";  
                     }
                     
-                    $sql = "SELECT * FROM complaint where statusID = '3'";
+                    $sql = "SELECT * FROM complaint where statusID = '3' AND userID = '$user'";
                     $result = $conn->query($sql);
         
                     if ($result->num_rows > 0) {

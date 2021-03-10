@@ -134,7 +134,7 @@ require_once "modules/services.php";
           
 <?php
     $user= $_SESSION["userid"];
-    $sql = " SELECT * FROM complaint where userID = '$user' ORDER BY id DESC ";
+    $sql = " SELECT * FROM complaint where userID = '$user' ORDER BY c_id DESC ";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

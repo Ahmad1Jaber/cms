@@ -1,4 +1,4 @@
-<?php $title = "Admin Dashboard";
+<?php $title = "Admin Dashboard | Dismissed";
 require_once "includes/header.php";
 require_once "../app/conn.php";
 require_once "app/redirect.php";
@@ -8,7 +8,7 @@ require_once "includes/nav.php";
 <div class="row ">
 <?php
  require_once "modules/status.php";
- require_once "modules/pending.php";
+ require_once "modules/dismissed.php";
 ?>
 
 </div>
