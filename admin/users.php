@@ -9,7 +9,7 @@ require_once "includes/nav.php";
 
 <?php
  require_once "modules/status.php";
- require_once "modules/resolved.php";
+ require_once "modules/user.php";
 ?>
 
 </div>

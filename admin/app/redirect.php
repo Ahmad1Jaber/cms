@@ -11,7 +11,7 @@ if($_SESSION['role']==2){
     header("Location: ");
     //exit();
 }elseif($_SESSION['role']==1){
-    header("Location:../admin/index.php");
+    header("Location:../user/index.php");
     exit();
 }
 }else{
