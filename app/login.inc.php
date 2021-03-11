@@ -1,14 +1,20 @@
 <?php
-if (isset($_POST['login-submit'])) {
     require 'conn.php';
     require_once('token.inc.php');
+//Check if login_submit is posted 
+if (isset($_POST['login-submit'])) {
+
+    //set all posted data into varaibles 
     $userName=$_POST['user-name'];
     $pword=$_POST['user-password'];
+
+    //check if empty if not procees to query and execution statement
     if(empty($userName) || empty($pword)){
         $randSuccess = getToken(10);
         header("Location: ../index.php?empty=$randSuccess");
         exit();
     }else{
+        //select query for user  
         $sql="SELECT * FROM users WHERE username=? OR email=?;";
         $stmt=mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt,$sql)) {
