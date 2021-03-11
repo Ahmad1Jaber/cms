@@ -133,10 +133,34 @@ require_once "modules/services.php";
           <!-- <img class="card-img-top smallimg" src="../assets/SVG/character1.svg" alt="No Complaints" height="350in"> -->
           
 <?php
+    $user= $_SESSION["userid"];
+
+ //-----------Pagination Start----------//
+  // define how many results you want per page
+  $results_per_page = 10;
+  // find out the number of results stored in database
+  $sql="SELECT * FROM complaint where userID = '$user'";
+  $result = mysqli_query($conn, $sql);
+  $number_of_results = mysqli_num_rows($result);
+  $number_of_pages = ceil($number_of_results/$results_per_page);
+  // determine which page number visitor is currently on
+  if (!isset($_GET['page'])) {
+    $page = 1;
+    $count=1;
+  } else {
+    $page = $_GET['page'];
+    if($page==1){
+    $count=1;
+  }else{
+    $count=(($page*10)-10)+1;
+    }
+    }
+  // determine the sql LIMIT starting number for the results on the displaying page
+  $this_page_first_result = ($page-1)*$results_per_page;
+//-----------Pagination End----------//
 
     //Select statement and query for results 
-    $user= $_SESSION["userid"];
-    $sql = " SELECT * FROM complaint where userID = '$user' ORDER BY c_id DESC ";
+    $sql = " SELECT * FROM complaint where userID = '$user' ORDER BY c_id DESC LIMIT " . $this_page_first_result . "," .  $results_per_page ;
     $result = $conn->query($sql);
     
     //Check if results returned
@@ -181,7 +205,17 @@ require_once "modules/services.php";
 
           
           <br>
-      </div>    
+          <nav aria-label="Page navigation mb-3">
+        <ul class="pagination justify-content-center">
+          <?php 
+          for ($page=1;$page<=$number_of_pages;$page++) {
+          echo '<li class="page-item"><a class="page-link" href="index.php?page=' . $page . '">' . $page . '</a></li> ';
+          }
+          ?>
+        </ul>
+      </nav>  
+      </div>  
+
   </div>
 </div>
 

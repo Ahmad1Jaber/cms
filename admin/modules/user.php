@@ -30,11 +30,35 @@
   <?php
   //Select pending complaints from the database
   require "../app/conn.php";
-  $sql = " SELECT * FROM users ORDER BY roleID DESC";
+
+    //-----------Pagination Start----------//
+  // define how many results you want per page
+  $results_per_page = 10;
+  // find out the number of results stored in database
+  $sql="SELECT * FROM users";
+  $result = mysqli_query($conn, $sql);
+  $number_of_results = mysqli_num_rows($result);
+  $number_of_pages = ceil($number_of_results/$results_per_page);
+  // determine which page number visitor is currently on
+  if (!isset($_GET['page'])) {
+    $page = 1;
+    $count=1;
+  } else {
+    $page = $_GET['page'];
+    if($page==1){
+    $count=1;
+  }else{
+    $count=(($page*10)-10)+1;
+    }
+    }
+  // determine the sql LIMIT starting number for the results on the displaying page
+  $this_page_first_result = ($page-1)*$results_per_page;
+//-----------Pagination End----------//
+
+  $sql = " SELECT * FROM users ORDER BY roleID DESC LIMIT " . $this_page_first_result . "," .  $results_per_page ;
   
   //Query selected statement  
   $result = mysqli_query($conn , $sql);
-  $count=1;
   if (mysqli_num_rows($result) > 0) {
       
     // Loop through output data of each row
@@ -98,4 +122,13 @@
 
     </tbody>
 </table>
+<nav aria-label="Page navigation mb-3">
+  <ul class="pagination justify-content-center">
+    <?php 
+    for ($page=1;$page<=$number_of_pages;$page++) {
+      echo '<li class="page-item"><a class="page-link" href="users.php?page=' . $page . '">' . $page . '</a></li> ';
+    }
+    ?>
+  </ul>
+</nav>
 </div>

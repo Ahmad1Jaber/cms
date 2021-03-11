@@ -14,11 +14,15 @@ if(isset($_POST["update"])){
     $sql = "UPDATE users SET roleID = '$roleID' WHERE id='$userID'";
     if (mysqli_query($conn, $sql)) {
         $randSuccess = getToken(10);
-        header("Location: {$_SERVER['HTTP_REFERER']}?success=$randSuccess");
+        $bits = explode('?',$_SERVER['HTTP_REFERER']);
+        $redirect = $bits[0];
+        header("Location: {$redirect}?success=$randSuccess");
         exit(); 
     } else {    
         $randSuccess = getToken(10);
-        header("Location: {$_SERVER['HTTP_REFERER']}?error=$randSuccess");
+        $bits = explode('?',$_SERVER['HTTP_REFERER']);
+        $redirect = $bits[0];
+        header("Location: {$redirect}?error=$randSuccess");
         exit(); 
     }
 }

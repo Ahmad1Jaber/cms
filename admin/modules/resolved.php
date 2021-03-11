@@ -30,14 +30,37 @@
   <?php
   //Select pending complaints from the database
   require "../app/conn.php";
+  //-----------Pagination Start----------//
+  // define how many results you want per page
+  $results_per_page = 10;
+  // find out the number of results stored in database
+  $sql="SELECT * FROM complaint WHERE statusID = '2'";
+  $result = mysqli_query($conn, $sql);
+  $number_of_results = mysqli_num_rows($result);
+  $number_of_pages = ceil($number_of_results/$results_per_page);
+  // determine which page number visitor is currently on
+  if (!isset($_GET['page'])) {
+    $page = 1;
+    $count=1;
+  } else {
+    $page = $_GET['page'];
+    if($page==1){
+    $count=1;
+  }else{
+    $count=(($page*10)-10)+1;
+    }
+    }
+  // determine the sql LIMIT starting number for the results on the displaying page
+  $this_page_first_result = ($page-1)*$results_per_page;
+//-----------Pagination End----------//
+
   $sql = " SELECT * FROM complaint INNER JOIN users ON complaint.userID = users.id 
   INNER JOIN location ON complaint.locationID = location.id
   INNER JOIN service ON complaint.serviceID = service.id
-  where statusID = '2' ORDER BY complaint.priority DESC, complaint.c_id DESC";
+  where statusID = '2' ORDER BY complaint.priority DESC, complaint.c_id DESC LIMIT " . $this_page_first_result . "," .  $results_per_page ;
   
   //Query selected statement
   $result = mysqli_query($conn , $sql);
-  $count=1;
   if (mysqli_num_rows($result) > 0) {
       
     // Loop through output data of each row
@@ -152,4 +175,14 @@
 
     </tbody>
 </table>
+<nav aria-label="Page navigation mb-3">
+  <ul class="pagination justify-content-center">
+    <?php 
+    for ($page=1;$page<=$number_of_pages;$page++) {
+      echo '<li class="page-item"><a class="page-link" href="resolved.php?page=' . $page . '">' . $page . '</a></li> ';
+    }
+    ?>
+  </ul>
+</nav>
+
 </div>
