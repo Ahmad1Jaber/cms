@@ -24,12 +24,12 @@ $sql = "INSERT INTO complaint (userID, serviceID, locationID, subject, descripti
 
 if ($conn->query($sql) === TRUE) {
     $randSuccess = getToken(10);
-    header("Location: ../index.php?created=$randSuccess");
+    header("Location: {$_SERVER['HTTP_REFERER']}?created=$randSuccess");
     exit();  
 } else {
     // echo "Error: " . $sql . "<br>" . $conn->error;    
     $randSuccess = getToken(10);
-    header("Location: ../index.php?error=$randSuccess");
+    header("Location: {$_SERVER['HTTP_REFERER']}?error=$randSuccess");
     exit();  
 }
 
